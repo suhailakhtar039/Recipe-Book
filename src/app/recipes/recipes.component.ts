@@ -6,8 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './recipes.component.css'
 })
 export class RecipesComponent implements OnInit {
-  recipes: number[] = [];
-  constructor(){}
+  
+
   ngOnInit(): void {
       
   }
