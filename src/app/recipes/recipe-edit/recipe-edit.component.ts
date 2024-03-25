@@ -15,7 +15,7 @@ export class RecipeEditComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(
       (param:Params)=>{
-        this.id = param['id'];
+        this.id = +param['id'];
         this.editMode = param['id'] !=null;
       }
     )
