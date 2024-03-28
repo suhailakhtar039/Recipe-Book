@@ -10,17 +10,17 @@ export class RecipeService {
 
     private recipes: Recipe[] = [
         new Recipe(
-            'Momos',
-            'Bad for health',
-            'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&webp=true&resize=375,341',
+            'Omelette',
+            'Good for health and edible',
+            'https://www.mygorgeousrecipes.com/wp-content/uploads/2018/02/Worlds-Best-Vegetarian-Omelette-Quick-and-Easy.jpg',
             [
                 new Ingredient('Meat',1),
                 new Ingredient('salad',10)
             ]),
         new Recipe(
-            'Salad',
-            'Good for health', 
-            'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&webp=true&resize=375,341',
+            'Burger',
+            'Bad for health', 
+            'https://www.shutterstock.com/image-photo/classic-hamburger-stock-photo-isolated-600nw-2282033179.jpg',
             [
                 new Ingredient('French fries', 10),
                 new Ingredient('cola', 20)
