@@ -9,10 +9,10 @@ import { Router } from '@angular/router';
   templateUrl: './auth.component.html',
 })
 export class AuthComponent {
-  constructor(private authService: AuthService, private router:Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
   isLoginMode = true;
-	isLoading = false;
-	error: string = null;
+  isLoading = false;
+  error: string = null;
 
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
@@ -23,26 +23,27 @@ export class AuthComponent {
     const email = form.value.email;
     const password = form.value.password;
 
-		let authObs:Observable<AuthResponseData>;
+    let authObs: Observable<AuthResponseData>;
 
-		this.isLoading = true;
+    this.isLoading = true;
     if (this.isLoginMode) {
       authObs = this.authService.logIn(email, password);
     } else {
       authObs = this.authService.signup(email, password);
     }
 
-
-		authObs.subscribe(resData => {
-			console.log(resData)
-			this.isLoading = false;
-      this.router.navigate(['/recipes'])
-		},
-		errorMessage => {
-				console.log(errorMessage);
-				this.error = errorMessage;
-				this.isLoading = false;
-			})
+    authObs.subscribe(
+      (resData) => {
+        console.log(resData);
+        this.isLoading = false;
+        this.router.navigate(['/recipes']);
+      },
+      (errorMessage) => {
+        console.log(errorMessage);
+        this.error = errorMessage;
+        this.isLoading = false;
+      }
+    );
 
     form.reset();
   }
