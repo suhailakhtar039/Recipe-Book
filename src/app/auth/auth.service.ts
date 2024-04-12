@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { catchError, tap } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 import { User } from './user.model';
 
@@ -24,7 +25,8 @@ export class AuthService {
   signup(email: string, password: string) {
     return this.http
       .post<AuthResponseData>(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyC-51Fkt4S6wHT3PwtYNZhTaIuISvRu-w4',
+        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' +
+          environment.firebaseAPIKey,
         {
           email: email,
           password: password,
@@ -47,7 +49,8 @@ export class AuthService {
   logIn(email: string, password: string) {
     return this.http
       .post<AuthResponseData>(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyC-51Fkt4S6wHT3PwtYNZhTaIuISvRu-w4',
+        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' +
+          environment.firebaseAPIKey,
         {
           email: email,
           password: password,
@@ -85,9 +88,9 @@ export class AuthService {
 
     if (loadedUser.token) {
       this.user.next(loadedUser);
-      const expirationDuration:number =
-      new Date(userData._tokenExpirationDate).getTime() -
-      new Date().getTime();
+      const expirationDuration: number =
+        new Date(userData._tokenExpirationDate).getTime() -
+        new Date().getTime();
       this.autoLogout(expirationDuration);
     }
   }
